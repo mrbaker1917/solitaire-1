@@ -296,7 +296,7 @@ def move_rev(fnds, piles):
         else:
             break
     while True:
-        print("Input the pile you want to move to. (numebr  1-7)")
+        print("Input the pile you want to move to. (number  1-7)")
         print("Input 'r' to return.")
         in2 = input(":> ")
         if in2 == "r":
