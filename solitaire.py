@@ -215,7 +215,7 @@ def move_fnd(fnds, piles):
 
 def flip_deck(deck):
     if len(deck[1]) == 0 and len(deck[0]) != 0:
-        deck[1].extend(deck[0])
+        deck[1].extend(deck[0][::-1])
         deck[0] = []
     elif len(deck[1]) == 0 and len(deck[0]) == 0:
         print("Invalid move. (no cards left in deck!)")
