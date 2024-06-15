@@ -205,7 +205,7 @@ def move_fnd(fnds, piles):
             print("Invalid input. (must be digit)")
         except IndexError:
             print("Invalid input. (must be a number 1-4)")
-        except PileError as e:
+        except FndError as e:
             print(e)
         else:
             fnds[int(in2) - 1] = fnd
@@ -324,7 +324,7 @@ def check_fnd(fnd):
             raise FndError("Invalid move. (must be ace)")
     elif len(fnd) > 1:
         if fnd[-1].suit != fnd[-2].suit:
-            raise FndError("Invalid move. (must be ace)")
+            raise FndError("Invalid move. (must be same suit)")
         elif fnd[-1].value - 1 != fnd[-2].value:
             raise FndError("Invalid move. (bad value sort)")
 
