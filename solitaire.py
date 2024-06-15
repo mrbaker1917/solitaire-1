@@ -110,7 +110,10 @@ def check_king(pile):
 def move_pile(piles):
     while True:
         print("Which pile would you like to move from (number 1-7)?")
+        print("Input 'r' to return.")
         in1 = input(":> ")
+        if in1 == "r":
+            break
         try:
             pile1 = copy.deepcopy(piles[int(in1) - 1])
         except ValueError:
@@ -122,7 +125,10 @@ def move_pile(piles):
             break
     while True:
         print("Which pile would you like to move to? (number 1-7)")
+        print("Input 'r' to return.")
         in2 = input(":> ")
+        if in2 == "r":
+            break
         try:
             pile2 = copy.deepcopy(piles[int(in2) - 1])
             if in1 == in2:
@@ -142,7 +148,7 @@ def move_pile(piles):
         print(
             "Input the card (or bottom card) you'd like to move from the first pile. (card value ex. 'Ace', 'Queen')"
         )
-        print("If no moves are available, type 'r' to return.")
+        print("Input 'r' to return.")
         in3 = input(":> ")
         if in3 == "r":
             break
@@ -170,7 +176,10 @@ def move_pile(piles):
 def move_fnd(fnds, piles):
     while True:
         print("Input the pile you'd like to move the top card from. (number 1-7)")
+        print("Input 'r' to return.")
         in1 = input(":> ")
+        if in1 == "r":
+            break
         try:
             pile = copy.deepcopy(piles[int(in1) - 1])
         except ValueError:
@@ -182,7 +191,7 @@ def move_fnd(fnds, piles):
     while True:
         pile = copy.deepcopy(piles[int(in1) - 1])
         print("Input the foundation pile you'd like to move your card to. (number 1-4)")
-        print("If no moves are available, type 'r' to return.")
+        print("Input 'r' to return.")
         in2 = input(":> ")
         if in2 == "r":
             break
@@ -218,7 +227,10 @@ def flip_deck(deck):
 def move_deck(deck, piles, fnds):  # make sure there is a face-up card in the deck
     while True:
         print("Input whether to move to a foundation or a pile. ('f' or 'p')")
+        print("Input 'r' to return.")
         in1 = input(":> ")
+        if in1 == "r":
+            break
         if in1 != "f" and in1 != "p":
             print("Invalid input. (must be 'f' or 'p')")
         else:
@@ -226,7 +238,7 @@ def move_deck(deck, piles, fnds):  # make sure there is a face-up card in the de
     if in1 == "f":
         while True:
             print("Input the foundation pile you want to move to. (number 1-4)")
-            print("If no moves are available, type 'r' to return.")
+            print("Input 'r' to return.")
             in2 = input(":> ")
             if in2 == "r":
                 break
@@ -243,10 +255,12 @@ def move_deck(deck, piles, fnds):  # make sure there is a face-up card in the de
                 print(e)
             else:
                 fnds[int(in2) - 1] = fnd
+                break
+
     else:
         while True:
             print("Input the pile you want to move to. (number 1-7)")
-            print("If no moves are available, type 'r' to return.")
+            print("Input 'r' to return.")
             in2 = input(":> ")
             if in2 == "r":
                 break
@@ -269,7 +283,10 @@ def move_deck(deck, piles, fnds):  # make sure there is a face-up card in the de
 def move_rev(fnds, piles):
     while True:
         print("Input the foundation pile you want to move from. (number 1-4)")
+        print("Input 'r' to return.")
         in1 = input(":> ")
+        if in1 == "r":
+            break
         try:
             fnd = copy.deepcopy(fnds[int(in1) - 1])
         except ValueError:
@@ -280,7 +297,7 @@ def move_rev(fnds, piles):
             break
     while True:
         print("Input the pile you want to move to. (numebr  1-7)")
-        print("If no moves are available, type 'r' to return.")
+        print("Input 'r' to return.")
         in2 = input(":> ")
         if in2 == "r":
             break
