@@ -103,11 +103,6 @@ def flip_card(pile):
     pile.face_down.pop()
 
 
-def check_king(pile):
-    if pile.face_up[0].rank != "King":
-        raise PileError("Invalid move! (must be king)")
-
-
 def move_pile(piles):
     while True:
         print("Which pile would you like to move from (number 1-7)?")
