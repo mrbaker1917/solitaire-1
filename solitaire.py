@@ -394,7 +394,10 @@ class Card:
         self.output = f"{self.rank} of {self.suit}"
 
     def __str__(self):
-        return self.output
+        if self.color == "Red":
+            return (colored(self.output, "red"))
+        else:
+            return (colored(self.output, "blue"))
 
 
 class Pile:
