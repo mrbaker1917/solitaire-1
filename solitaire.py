@@ -391,13 +391,13 @@ class Card:
         self.rank = assign_rank(seed)
         self.suit = assign_suit(seed)
         self.color = assign_color(self.suit)
-        self.output = f"{self.rank} of {self.suit}"
-
-    def __str__(self):
         if self.color == "Red":
-            return colored(self.output, "red")
+            self.output = colored(f"{self.rank} of {self.suit}", "red")
         else:
-            return colored(self.output, "blue")
+            self.output = colored(f"{self.rank} of {self.suit}", "blue")
+        
+    def __str__(self):
+        return self.output
 
 
 class Pile:
@@ -406,9 +406,13 @@ class Pile:
         self.face_up = []
 
     def print_pile(self):
-        for card in self.face_up:
-            print(card)
-        print(f"{len(self.face_down)} cards face-down.")
+        if len(self.face_down) == 0 and len(self.face_up) == 0:
+            print(colored("Empty deck.", "yellow"))
+        else:
+            for i in range(len(self.face_up) - 1):
+                print(self.face_up[i])
+            print("\t" + self.face_up[-1].output)
+            print(f"{len(self.face_down)} cards face-down.")
 
     def check_pile(self):
         if len(self.face_up) == 0:
