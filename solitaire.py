@@ -147,7 +147,7 @@ def move_pile(piles):
         pile1 = copy.deepcopy(piles[int(in1) - 1])
         pile2 = copy.deepcopy(piles[int(in2) - 1])
         print(
-            "Input the card (or bottom card) you'd like to move from the first pile. (card value ex. 'Ace', 'Queen')"
+            "Input the card (or bottom card) you'd like to move from the first pile. (card rank ex. 'Ace', 'Queen')"
         )
         print("Input 'r' to return.")
         in3 = input(":> ")
@@ -164,7 +164,7 @@ def move_pile(piles):
         except PileError as e:
             print(e)
         except ValueError:
-            print(f"Invalid input. (no card with value of {in3})")
+            print(f"Invalid input. (no {in3} in that pile)")
         else:
             piles[int(in1) - 1] = pile1
             piles[int(in2) - 1] = pile2
