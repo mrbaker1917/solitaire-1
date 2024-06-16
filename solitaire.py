@@ -395,9 +395,9 @@ class Card:
 
     def __str__(self):
         if self.color == "Red":
-            return (colored(self.output, "red"))
+            return colored(self.output, "red")
         else:
-            return (colored(self.output, "blue"))
+            return colored(self.output, "blue")
 
 
 class Pile:
