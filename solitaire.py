@@ -114,7 +114,7 @@ def move_pile(piles):
         print("Input 'r' to return.")
         in1 = input(":> ")
         if in1 == "r":
-            break
+            return
         try:
             pile1 = copy.deepcopy(piles[int(in1) - 1])
         except ValueError:
@@ -129,7 +129,7 @@ def move_pile(piles):
         print("Input 'r' to return.")
         in2 = input(":> ")
         if in2 == "r":
-            break
+            return
         try:
             pile2 = copy.deepcopy(piles[int(in2) - 1])
             if in1 == in2:
@@ -152,7 +152,7 @@ def move_pile(piles):
         print("Input 'r' to return.")
         in3 = input(":> ")
         if in3 == "r":
-            break
+            return
         face_up_ranks = [card.rank for card in pile1.face_up]
         try:
             if len(pile2.face_up) == 0 and len(pile2.face_down) == 0 and in3 != "King":
@@ -180,7 +180,7 @@ def move_fnd(fnds, piles):
         print("Input 'r' to return.")
         in1 = input(":> ")
         if in1 == "r":
-            break
+            return
         try:
             pile = copy.deepcopy(piles[int(in1) - 1])
         except ValueError:
@@ -195,7 +195,7 @@ def move_fnd(fnds, piles):
         print("Input 'r' to return.")
         in2 = input(":> ")
         if in2 == "r":
-            break
+            return
         try:
             fnd = copy.deepcopy(fnds[int(in2) - 1])
             fnd.append(pile.face_up[-1])
@@ -231,7 +231,7 @@ def move_deck(deck, piles, fnds):  # make sure there is a face-up card in the de
         print("Input 'r' to return.")
         in1 = input(":> ")
         if in1 == "r":
-            break
+            return
         if in1 != "f" and in1 != "p":
             print("Invalid input. (must be 'f' or 'p')")
         else:
@@ -242,7 +242,7 @@ def move_deck(deck, piles, fnds):  # make sure there is a face-up card in the de
             print("Input 'r' to return.")
             in2 = input(":> ")
             if in2 == "r":
-                break
+                return
             try:
                 fnd = copy.deepcopy(fnds[int(in2) - 1])
                 fnd.append(deck[0][-1])
@@ -264,7 +264,7 @@ def move_deck(deck, piles, fnds):  # make sure there is a face-up card in the de
             print("Input 'r' to return.")
             in2 = input(":> ")
             if in2 == "r":
-                break
+                return
             try:
                 pile = copy.deepcopy(piles[int(in2) - 1])
                 pile.face_up.append(deck[0][-1])
@@ -287,7 +287,7 @@ def move_rev(fnds, piles):
         print("Input 'r' to return.")
         in1 = input(":> ")
         if in1 == "r":
-            break
+            return
         try:
             fnd = copy.deepcopy(fnds[int(in1) - 1])
         except ValueError:
@@ -301,7 +301,7 @@ def move_rev(fnds, piles):
         print("Input 'r' to return.")
         in2 = input(":> ")
         if in2 == "r":
-            break
+            return
         try:
             pile = copy.deepcopy(piles[int(in2) - 1])
             pile.face_up.append(fnd[-1])
