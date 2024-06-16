@@ -2,6 +2,7 @@ from random import shuffle
 import copy
 from termcolor import colored
 
+
 #######################################################################################################
 # CARD SETUP
 
