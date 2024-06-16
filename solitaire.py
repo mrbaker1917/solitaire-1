@@ -331,17 +331,17 @@ def check_fnd(fnd):
 
 
 def print_game(piles, fnds, deck):
-    print("Piles:")
+    print("\nPILES:")
     for pile in piles:
         print(str(piles.index(pile) + 1) + ")")
         pile.print_pile()
-    print("Foundation piles:")
+    print("\nFOUNDATION PILES:")
     for fnd in fnds:
         if len(fnd) != 0:
             print(fnd[-1])
         else:
             print("No cards.")
-    print("Deck:")
+    print("\nDECK:")
     if deck[0] == [] and deck[1] == []:
         print("No cards in the deck.")
     else:
@@ -454,7 +454,8 @@ while True:
             print_game(piles, fnds, deck)
 
             print(
-                """Pick a move:
+                """
+Pick a move:
 'p': move a card or stack of cards between piles
 'l': flip a card in the deck over. (if no cards are face down, the deck will be turned face-down.)
 'f': move a card from a pile to a foundation pile.
