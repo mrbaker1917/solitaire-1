@@ -103,11 +103,6 @@ def flip_card(pile):
     pile.face_down.pop()
 
 
-def check_king(pile):
-    if pile.face_up[0].rank != "King":
-        raise PileError("Invalid move! (must be king)")
-
-
 def move_pile(piles):
     while True:
         print("Which pile would you like to move from (number 1-7)?")
@@ -147,7 +142,7 @@ def move_pile(piles):
         pile1 = copy.deepcopy(piles[int(in1) - 1])
         pile2 = copy.deepcopy(piles[int(in2) - 1])
         print(
-            "Input the card (or bottom card) you'd like to move from the first pile. (card value ex. 'Ace', 'Queen')"
+            "Input the card (or bottom card) you'd like to move from the first pile. (card rank ex. 'Ace', 'Queen')"
         )
         print("Input 'r' to return.")
         in3 = input(":> ")
@@ -164,7 +159,7 @@ def move_pile(piles):
         except PileError as e:
             print(e)
         except ValueError:
-            print(f"Invalid input. (no card with value of {in3})")
+            print(f"Invalid input. (no {in3} in that pile)")
         else:
             piles[int(in1) - 1] = pile1
             piles[int(in2) - 1] = pile2
@@ -391,13 +386,13 @@ class Card:
         self.rank = assign_rank(seed)
         self.suit = assign_suit(seed)
         self.color = assign_color(self.suit)
-        self.output = f"{self.rank} of {self.suit}"
-
-    def __str__(self):
         if self.color == "Red":
-            return (colored(self.output, "red"))
+            self.output = colored(f"{self.rank} of {self.suit}", "red")
         else:
-            return (colored(self.output, "blue"))
+            self.output = colored(f"{self.rank} of {self.suit}", "blue")
+        
+    def __str__(self):
+        return self.output
 
 
 class Pile:
@@ -407,11 +402,8 @@ class Pile:
 
     def print_pile(self):
         for card in self.face_up:
-            if card.color == "Red":
-                print(f'  {colored(card, "red")}')
-            else:
-                print(f'  {colored(card, "blue")}')
-        print(f"  {len(self.face_down)} cards face-down.")
+            print(card)
+        print(f"{len(self.face_down)} cards face-down.")
 
     def check_pile(self):
         if len(self.face_up) == 0:
