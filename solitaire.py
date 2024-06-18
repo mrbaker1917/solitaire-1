@@ -3,8 +3,9 @@ import copy
 from termcolor import colored
 
 
-#######################################################################################################
+############
 # CARD SETUP
+############
 
 
 def assign_value(seed):
@@ -94,8 +95,26 @@ def deal_cards(piles):
         piles[i].face_down.pop(-1)
 
 
-########################################################################################################
-# MOVES AND MAIN LOGIC
+class Card:
+    def __init__(self):
+        seed = seeds[0]
+        seeds.pop(0)
+        self.value = assign_value(seed)
+        self.rank = assign_rank(seed)
+        self.suit = assign_suit(seed)
+        self.color = assign_color(self.suit)
+        if self.color == "Red":
+            self.output = colored(f"{self.rank} of {self.suit}", "red")
+        else:
+            self.output = colored(f"{self.rank} of {self.suit}", "blue")
+        
+    def __str__(self):
+        return self.output
+
+
+######################
+# MOVES AND PILE SETUP
+######################
 
 
 def flip_card(pile):
@@ -378,23 +397,6 @@ class FndError(Exception):
     pass
 
 
-class Card:
-    def __init__(self):
-        seed = seeds[0]
-        seeds.pop(0)
-        self.value = assign_value(seed)
-        self.rank = assign_rank(seed)
-        self.suit = assign_suit(seed)
-        self.color = assign_color(self.suit)
-        if self.color == "Red":
-            self.output = colored(f"{self.rank} of {self.suit}", "red")
-        else:
-            self.output = colored(f"{self.rank} of {self.suit}", "blue")
-        
-    def __str__(self):
-        return self.output
-
-
 class Pile:
     def __init__(self):
         self.face_down = []
@@ -417,8 +419,9 @@ class Pile:
                 raise PileError("Invalid move. (same color)")
 
 
-#########################################################################################################
-# MENU AND UI
+#############
+# UI
+#############
 
 
 print("\nWelcome to solitaire!")
